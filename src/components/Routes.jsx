@@ -14,7 +14,7 @@ export const Routes = () => {
         <Switch>
           <Route path="/" element={<Navigate to="/search" />} />
           {renderMultiRoutes({
-            paths: ['/search', '/images', '/news', '/videos'],
+            paths: ['/search', '/image', '/news', '/videos'],
             element: <Results />,
           })}
         </Switch>
