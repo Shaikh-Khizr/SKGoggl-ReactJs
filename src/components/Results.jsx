@@ -6,7 +6,7 @@ import { UseResultContext } from '../contexts/ResultContextProvider';
 import { Loading } from './Loading';
 
 export const Results = () => {
-  const { results, isLoading, getResults, searchTerm, setSearchTerm } = UseResultContext();
+  const { results, isLoading, getResults, searchTerm } = UseResultContext();
   const location = useLocation();
 
   useEffect(() => {
@@ -82,9 +82,11 @@ export const Results = () => {
         <div className="flex flex-wrap">
           {results?.map((video, index) => (
             <div key={index} className="p-2">
-              <a href={video.additional_links?.[0].href} target="_blank" rel="noreferrer">
+              {video.additional_links?.[0].href && (
+                <a href={video.additional_links?.[0].href} target="_blank" rel="noreferrer">
                 <ReactPlayer url={video.additional_links?.[0].href} controls width="355px" height="200px" />
-              </a>
+                </a>
+              )}
             </div>
           ))}
         </div>
